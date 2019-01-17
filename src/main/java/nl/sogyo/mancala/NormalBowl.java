@@ -2,8 +2,12 @@ package nl.sogyo.mancala;
 
 public class NormalBowl extends Bowl{
 	
+	
+	
 	public NormalBowl() {
+		
 		NumberOfBeads = 4;
+		
 	}
 	
 	
@@ -16,16 +20,21 @@ public class NormalBowl extends Bowl{
 		
 		return false;
 	}
-	public int Move(NormalBowl bowl) {
-		int number = bowl.NumberOfBeads;
-		bowl.NumberOfBeads = 0;
+	public int doMove() {
+		int number = this.NumberOfBeads;
+		this.NumberOfBeads = 0;
 		return number;
 	}
 	
-	public boolean CheckIfEmptyBowl() {
+	public boolean checkIfEmptyBowl() {
 		return this.NumberOfBeads == 0;
 	}
-	public void AddAllBeads() {}
-	public void Steal() {}
+	public void addAllBeads() {}
+	public void steal() {}
+
+
+
+	
+
 
 }

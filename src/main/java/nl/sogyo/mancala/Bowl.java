@@ -4,28 +4,45 @@ abstract class Bowl
 {
 	
 	protected int NumberOfBeads;
-	private Bowl nextBowl;
-	private Bowl oppositeBowl = nextBowl.oppositeBowl;
+	protected Bowl neighbour;
+	private Bowl oppositeBowl;
+	protected Player owner;
 	
 	
 	
 	
-	public void distribute(int n) {
-		
+	
+	
+	public void distributeBeads(int n) {
+		Bowl next = getNeighbour();
+		next.NumberOfBeads += 1;
+	}
+	
+	public int getNumberOfBeads(){
+		return NumberOfBeads;
 	}
 	
 	
-
-
-
-
-	public Bowl getNextBowl() {
-		return nextBowl;
+	public Player getPlayer() {
+		return owner;
 	}
+	
+	public void setNeighbour (Bowl neighbour) {
+		this.neighbour = neighbour;
+	}
+
+	public Bowl getNeighbour() {
+		return neighbour;
+	}
+	
+	
 	
 	public Bowl getOppositeBowl() {
+		oppositeBowl = neighbour.oppositeBowl;
 		return oppositeBowl;
 	}
+	
+
 
 
 
