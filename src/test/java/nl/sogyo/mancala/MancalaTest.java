@@ -7,8 +7,8 @@ public class MancalaTest {
 
     @Test
     public void zeroBeadsinKalaha()
-    {
-        Bowl kalaha = new Kalaha();
+    {	Player player = new Player();
+        Bowl kalaha = new Kalaha(player);
         Assert.assertEquals(0, kalaha.NumberOfBeads);
         
     }
@@ -39,38 +39,30 @@ public class MancalaTest {
     
     @Test
     public void checkStartPositions() {
+    	Player player = new Player();
+    	
     	NormalBowl[] playerbowls = new NormalBowl[12];
     	for (int i=0;i<playerbowls.length;i++)
     		playerbowls[i] = new NormalBowl();
     	
     	Kalaha[] kalahas = new Kalaha[2];
     	for (int i=0;i<kalahas.length;i++)
-    		kalahas[i] = new Kalaha();
+    		kalahas[i] = new Kalaha(player);
     	
     	Assert.assertEquals(0, kalahas[0].NumberOfBeads);
-    	Assert.assertEquals(4, playerbowls[7].NumberOfBeads);
+    	Assert.assertEquals(4, playerbowls[9].NumberOfBeads);
     }
     @Test
-    public void KnowsNeighbour() {
+    public void BowlKnowsNeighbour() {
     	Bowl test = new NormalBowl();
-    	Bowl firstcup = test.getNeighbour();
-    	
-    	
+    	Bowl neighbour = test.getNeighbour();
+    	Assert.assertEquals(test, neighbour.getNeighbour());
+    		
     }
     
     
-/*    @Test
-    public void checkDistribute() {
-    	NormalBowl[] bowls = new NormalBowl[4];
-    	for (int i=0;i<bowls.length;i++)
-    		bowls[i] = new NormalBowl(); 
-    	int n = bowls[0].doMove();
-  	
+    
 
-    	bowls[0].distributeBeads(n);
-    	Assert.assertEquals(5, bowls[1].NumberOfBeads);
-    	
-    }*/
 
 
 }

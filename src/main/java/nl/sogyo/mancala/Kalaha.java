@@ -1,13 +1,14 @@
 package nl.sogyo.mancala;
 
 public class Kalaha extends Bowl {
-	private Kalaha oppositeBowl = this;
 
-	public Kalaha() {
+
+	public Kalaha(Player player) {
 		NumberOfBeads = 0;
+		this.owner = player;
 	}
 	
-	public void AddAllBeads() {}
+
 
 	
 

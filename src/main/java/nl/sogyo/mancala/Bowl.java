@@ -8,15 +8,12 @@ abstract class Bowl
 	private Bowl oppositeBowl;
 	protected Player owner;
 	
+		
 	
 	
 	
 	
-	
-	public void distributeBeads(int n) {
-		Bowl next = getNeighbour();
-		next.NumberOfBeads += 1;
-	}
+
 	
 	public int getNumberOfBeads(){
 		return NumberOfBeads;

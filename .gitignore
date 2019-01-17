@@ -15,10 +15,11 @@ local.properties
 .settings/
 .loadpath
 .project
-.classpath
+
 
 ### Java
 *.class
+.classpath
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

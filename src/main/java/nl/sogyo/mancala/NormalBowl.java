@@ -2,24 +2,19 @@ package nl.sogyo.mancala;
 
 public class NormalBowl extends Bowl{
 	
+	private final int STARTING_BEADS = 4;
 	
 	
 	public NormalBowl() {
-		
-		NumberOfBeads = 4;
-		
+		Player player = new Player();
+		NumberOfBeads = STARTING_BEADS;
+		this.owner = player;
+		//this.neighbour = new NormalBowl();
 	}
 	
 	
 	
-	public boolean isFinished(NormalBowl[] bowls) {
-		for (NormalBowl bowl : bowls) 
-			if (bowl.NumberOfBeads == 0) 
-				return true;
-			
-		
-		return false;
-	}
+
 	public int doMove() {
 		int number = this.NumberOfBeads;
 		this.NumberOfBeads = 0;
