@@ -21,8 +21,9 @@ public class NormalBowl extends Bowl{
 		bowl.NumberOfBeads = 0;
 		return number;
 	}
-	public boolean CheckIfEmptyBowl(NormalBowl bowl) {
-		return bowl.NumberOfBeads == 0;
+	
+	public boolean CheckIfEmptyBowl() {
+		return this.NumberOfBeads == 0;
 	}
 	public void AddAllBeads() {}
 	public void Steal() {}

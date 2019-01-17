@@ -21,8 +21,8 @@ public class MancalaTest {
     
     @Test
     public void CheckEmptyBowl() {
-    	Bowl normalbowl = new NormalBowl();
-    	//Assert.assertFalse(normalbowl.CheckIfEmptyBowl());
+    	NormalBowl normalBowl = new NormalBowl();
+    	Assert.assertFalse(normalBowl.CheckIfEmptyBowl());
     }
 
 
