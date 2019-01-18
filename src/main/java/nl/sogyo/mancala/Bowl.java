@@ -24,9 +24,6 @@ abstract class Bowl
 		return owner;
 	}
 	
-	public void setNeighbour (Bowl neighbour) {
-		this.neighbour = neighbour;
-	}
 
 	public Bowl getNeighbour() {
 		return neighbour;

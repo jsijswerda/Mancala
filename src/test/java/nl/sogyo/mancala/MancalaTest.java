@@ -37,24 +37,11 @@ public class MancalaTest {
     }
     
     @Test
-    public void checkStartPositions() {
-    	Player player = new Player();
+    public void hasNeighbour() {
     	
-    	NormalBowl playerbowl = new NormalBowl();
-
+    	NormalBowl bowl1 = new NormalBowl();
+    	Assert.assertFalse(bowl1.neighbour==null);
     	
-    	Kalaha kalaha = new Kalaha(player);
-
-    	
-    	Assert.assertEquals(0, kalaha.NumberOfBeads);
-    	Assert.assertEquals(4, playerbowl.NumberOfBeads);
-    }
-    @Test
-    public void BowlKnowsNeighbour() {
-    	Bowl bowl = new NormalBowl();
-    	Bowl neighbour = bowl.getNeighbour();
-    	Assert.assertEquals(bowl, neighbour.getNeighbour());
-    		
     }
     
  

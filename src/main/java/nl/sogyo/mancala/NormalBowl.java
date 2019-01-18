@@ -4,12 +4,20 @@ public class NormalBowl extends Bowl{
 	
 	private final int STARTING_BEADS = 4;
 	
-	
+	//first bowl
 	public NormalBowl() {
 		Player player = new Player();
 		NumberOfBeads = STARTING_BEADS;
-		this.owner = player;
-		//this.neighbour = new NormalBowl();
+		owner = player;
+		int countBowls = 1;
+		neighbour = new NormalBowl(player, countBowls);
+	}
+	
+	public NormalBowl(Player player, int countBowls) {
+		NumberOfBeads = STARTING_BEADS;
+		owner = player;
+		//neighbour = new NormalBowl(player,countBowls);
+		
 	}
 	
 	
