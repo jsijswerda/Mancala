@@ -2,11 +2,11 @@ package nl.sogyo.mancala;
 
 public class Kalaha extends Bowl {
 
-	private final int STARTING_BEADS = 0;
+	private final int STARTING_STONES = 0;
 	
 	
 	public Kalaha(Player player) {
-		NumberOfBeads = STARTING_BEADS;
+		numberOfStones = STARTING_STONES;
 		this.owner = player;
 	}
 	

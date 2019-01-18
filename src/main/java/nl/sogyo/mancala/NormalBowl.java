@@ -2,21 +2,28 @@ package nl.sogyo.mancala;
 
 public class NormalBowl extends Bowl{
 	
-	private final int STARTING_BEADS = 4;
+	private final int STARTING_STONES = 4;
+	protected int bowlNumber;
 	
 	//first bowl
 	public NormalBowl() {
 		Player player = new Player();
-		NumberOfBeads = STARTING_BEADS;
+		numberOfStones = STARTING_STONES;
 		owner = player;
 		int countBowls = 1;
+		bowlNumber = countBowls;
 		neighbour = new NormalBowl(player, countBowls);
 	}
 	
 	public NormalBowl(Player player, int countBowls) {
-		NumberOfBeads = STARTING_BEADS;
+		numberOfStones = STARTING_STONES;
 		owner = player;
-		//neighbour = new NormalBowl(player,countBowls);
+		int count = countBowls;
+		bowlNumber = countBowls;
+		
+		while (count++<6)
+			neighbour = new NormalBowl(player,count);
+		
 		
 	}
 	
@@ -24,16 +31,15 @@ public class NormalBowl extends Bowl{
 	
 
 	public int doMove() {
-		int number = this.NumberOfBeads;
-		this.NumberOfBeads = 0;
+		int number = this.numberOfStones;
+		this.numberOfStones = 0;
 		return number;
 	}
 	
 	public boolean checkIfEmptyBowl() {
-		return this.NumberOfBeads == 0;
+		return this.numberOfStones == 0;
 	}
-	public void addAllBeads() {}
-	public void steal() {}
+
 
 
 

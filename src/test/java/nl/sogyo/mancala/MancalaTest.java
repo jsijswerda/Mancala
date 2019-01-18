@@ -9,14 +9,14 @@ public class MancalaTest {
     public void zeroBeadsinKalaha()
     {	Player player = new Player();
         Bowl kalaha = new Kalaha(player);
-        Assert.assertEquals(0, kalaha.NumberOfBeads);
+        Assert.assertEquals(0, kalaha.numberOfStones);
         
     }
 
     @Test
     public void fourBeadsinNormalBowl() {
     	Bowl normalbowl = new NormalBowl();
-    	Assert.assertEquals(4, normalbowl.NumberOfBeads);
+    	Assert.assertEquals(4, normalbowl.numberOfStones);
     }
     
     @Test
@@ -32,7 +32,7 @@ public class MancalaTest {
     	int n = bowl.doMove();
     	
     	Assert.assertEquals(4, n);
-    	Assert.assertEquals(0, bowl.NumberOfBeads);
+    	Assert.assertEquals(0, bowl.numberOfStones);
    
     }
     
@@ -44,5 +44,10 @@ public class MancalaTest {
     	
     }
     
+    @Test
+    public void bowlsinChain() {
+    	NormalBowl bowl1 = new NormalBowl();
+    	Assert.assertEquals(1, bowl1.bowlNumber);
+    }
  
 }
