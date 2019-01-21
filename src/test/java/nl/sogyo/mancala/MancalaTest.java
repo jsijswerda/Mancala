@@ -46,7 +46,7 @@ public class MancalaTest {
     }
     
     @Test
-    public void bowlsinChain() {
+    public void bowlsAreinChain() {
     	NormalBowl bowl1 = new NormalBowl();
     	Assert.assertEquals(7,bowl1.getNeighbour().getNeighbour().getNeighbour().getNeighbour().getNeighbour().getNeighbour().bowlNumber);
     }
@@ -57,6 +57,23 @@ public class MancalaTest {
     	Assert.assertTrue(bowl1.getNeighbour().getNeighbour().getNeighbour().getNeighbour().
     			getNeighbour().getNeighbour() instanceof Kalaha);
     }
+    
+    @Test
+    public void kalahaKnowsFirstBowl () {
+    	NormalBowl bowl1 = new NormalBowl();
+    	Assert.assertEquals(bowl1.getNeighbour().getNeighbour().getNeighbour().getNeighbour().
+    			getNeighbour().getNeighbour().getNeighbour().getNeighbour().getNeighbour()
+    			.getNeighbour().getNeighbour().getNeighbour().getNeighbour(), bowl1);
+    }
+    
+
+    
+    @Test
+    public void findNextNormalBowlAfterKalaha() {
+    	NormalBowl bowl1 = new NormalBowl();
+    	Assert.assertTrue(bowl1.getNeighbour().getNeighbour().getNeighbour().getNeighbour().
+    			getNeighbour().getNeighbour().getNeighbour() instanceof NormalBowl);
+    }    
     
     @Test
     public void PlayerHasOpponent() {
