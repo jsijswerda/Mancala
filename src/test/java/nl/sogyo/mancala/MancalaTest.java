@@ -47,7 +47,9 @@ public class MancalaTest {
     @Test
     public void bowlsinChain() {
     	NormalBowl bowl1 = new NormalBowl();
-    	Assert.assertEquals(1, bowl1.bowlNumber);
+    	Assert.assertEquals(3,bowl1.getNeighbour().getNeighbour().bowlNumber);
     }
+    
+
  
 }

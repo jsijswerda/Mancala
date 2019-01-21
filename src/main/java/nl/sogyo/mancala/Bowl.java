@@ -5,8 +5,16 @@ abstract class Bowl
 	
 	protected int numberOfStones;
 	protected Bowl neighbour;
-	private Bowl oppositeBowl;
+	
 	protected Player owner;
+	protected int bowlNumber;
+	
+	public Bowl() {}
+	
+	public Bowl getNeighbour() {
+		return neighbour;
+	}
+	
 	
 		
 	
