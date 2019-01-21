@@ -7,8 +7,9 @@ public class MancalaTest {
 
     @Test
     public void zeroBeadsinKalaha()
-    {	Player player = new Player();
-        Bowl kalaha = new Kalaha(player);
+    {	Player player = new Player(true);
+    	NormalBowl bowl = new NormalBowl();
+        Bowl kalaha = new Kalaha(player, 1, bowl);
         Assert.assertEquals(0, kalaha.numberOfStones);
         
     }
@@ -40,14 +41,27 @@ public class MancalaTest {
     public void hasNeighbour() {
     	
     	NormalBowl bowl1 = new NormalBowl();
-    	Assert.assertFalse(bowl1.neighbour==null);
+    	Assert.assertEquals(2,bowl1.getNeighbour().bowlNumber);
     	
     }
     
     @Test
     public void bowlsinChain() {
     	NormalBowl bowl1 = new NormalBowl();
-    	Assert.assertEquals(3,bowl1.getNeighbour().getNeighbour().bowlNumber);
+    	Assert.assertEquals(7,bowl1.getNeighbour().getNeighbour().getNeighbour().getNeighbour().getNeighbour().getNeighbour().bowlNumber);
+    }
+    
+    @Test
+    public void findKalaha() {
+    	NormalBowl bowl1 = new NormalBowl();
+    	Assert.assertTrue(bowl1.getNeighbour().getNeighbour().getNeighbour().getNeighbour().
+    			getNeighbour().getNeighbour() instanceof Kalaha);
+    }
+    
+    @Test
+    public void PlayerHasOpponent() {
+    	Player player = new Player(true);
+    	Assert.assertEquals(player.opponent.getOpponent(),player);
     }
     
 

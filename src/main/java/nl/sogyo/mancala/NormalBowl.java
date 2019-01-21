@@ -7,28 +7,34 @@ public class NormalBowl extends Bowl{
 	
 	//first bowl
 	public NormalBowl() {
-		Player player = new Player();
+		Player player = new Player(true);
 		numberOfStones = STARTING_STONES;
 		owner = player;
 		
 		this.bowlNumber = 1;
-		neighbour = new NormalBowl(player, bowlNumber++);
+		neighbour = new NormalBowl(player, bowlNumber+1, this);
 	}
 	
 	//all other bowls
-	public NormalBowl(Player player, int countBowls) {
+	public NormalBowl(Player player, int countBowls, Bowl startingBowl) {
 		numberOfStones = STARTING_STONES;
 		owner = player;
 		bowlNumber = countBowls;
+		
 				
-		while (countBowls++<6)
-			neighbour = new NormalBowl(player,countBowls);
+		if (countBowls < 6) 
+			neighbour = new NormalBowl(player,countBowls+1,startingBowl); 	
+		
+		else if (countBowls == 6) 
+			neighbour = new Kalaha(player,countBowls+1, startingBowl);
+		else if (countBowls > 6 && countBowls < 12)
+			neighbour = new NormalBowl(player,countBowls+1,startingBowl);
+		else if (countBowls == 12) 
+			neighbour = new Kalaha(player, startingBowl);
+		
+		
 	}
-	@Override
-	public Bowl getNeighbour() {
-		return neighbour;
-	}
-	
+
 	
 	
 
