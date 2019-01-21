@@ -1,8 +1,8 @@
 package nl.sogyo.mancala;
 
 public class Player {
-	protected boolean hasTurn;
-	protected Player opponent;
+	private boolean hasTurn;
+	private Player opponent;
 
 
 
@@ -22,6 +22,17 @@ public class Player {
 		return opponent;
 	}
 	
+	public boolean getHasTurn() {
+		return hasTurn;
+	}
+	
+	public void changeTurn() {
+		
+		this.hasTurn = !this.hasTurn;
+		this.opponent.hasTurn = !this.opponent.hasTurn;
+	}
+		
+
 
 
 }

@@ -15,6 +15,15 @@ abstract class Bowl
 		return neighbour;
 	}
 	
+	public Bowl getBowlNumberX(int x) {
+		if (x == 1)
+			return this;
+		else {
+			x--;
+			return getBowlNumberX(x);
+		}
+	}
+	
 	
 	
 	

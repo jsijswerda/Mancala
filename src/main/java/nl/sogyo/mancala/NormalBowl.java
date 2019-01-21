@@ -12,7 +12,7 @@ public class NormalBowl extends Bowl{
 		owner = player;
 		
 		this.bowlNumber = 1;
-		neighbour = new NormalBowl(player, bowlNumber+1, this);
+		neighbour = new NormalBowl(player, ++bowlNumber, this);
 	}
 	
 	//all other bowls
@@ -23,12 +23,11 @@ public class NormalBowl extends Bowl{
 		
 				
 		if (countBowls < 6) 
-			neighbour = new NormalBowl(player,countBowls+1,startingBowl); 	
-		
+			neighbour = new NormalBowl(player,++countBowls,startingBowl); 	
 		else if (countBowls == 6) 
-			neighbour = new Kalaha(player,countBowls+1, startingBowl);
+			neighbour = new Kalaha(player,++countBowls, startingBowl);
 		else if (countBowls > 6 && countBowls < 12)
-			neighbour = new NormalBowl(player,countBowls+1,startingBowl);
+			neighbour = new NormalBowl(player,++countBowls,startingBowl);
 		else if (countBowls == 12) 
 			neighbour = new Kalaha(player, startingBowl);
 		

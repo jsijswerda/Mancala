@@ -48,7 +48,8 @@ public class MancalaTest {
     @Test
     public void bowlsAreinChain() {
     	NormalBowl bowl1 = new NormalBowl();
-    	Assert.assertEquals(7,bowl1.getNeighbour().getNeighbour().getNeighbour().getNeighbour().getNeighbour().getNeighbour().bowlNumber);
+    	Assert.assertEquals(7,bowl1.getNeighbour().getNeighbour().getNeighbour().
+    			getNeighbour().getNeighbour().getNeighbour().bowlNumber);
     }
     
     @Test
@@ -78,8 +79,27 @@ public class MancalaTest {
     @Test
     public void PlayerHasOpponent() {
     	Player player = new Player(true);
-    	Assert.assertEquals(player.opponent.getOpponent(),player);
+    	Assert.assertEquals(player.getOpponent().getOpponent(),player);
     }
+    
+    @Test
+    public void ChangeTurns() {
+    	Player player = new Player(true);
+    	
+    	player.changeTurn();
+    	
+    	Assert.assertFalse(player.getHasTurn());
+    	Assert.assertTrue(player.getOpponent().getHasTurn());
+    	
+    }
+    
+    @Test
+    public void getBowlNumberX() {
+    	NormalBowl bowl1 = new NormalBowl();
+    	Bowl bowl3 = bowl1.getBowlNumberX(3);
+    	Assert.assertEquals(bowl1.getNeighbour().getNeighbour().bowlNumber, bowl3.bowlNumber);
+    
+    }	
     
 
  
