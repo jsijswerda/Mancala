@@ -13,13 +13,21 @@ public class Kalaha extends Bowl {
 		
 	}
 	
-	public Kalaha(Player player, Bowl startingBowl) {
+	public Kalaha(Player player, Bowl startBowl) {
 		numberOfStones = STARTING_STONES;
 		this.owner = player;
-		this.neighbour = startingBowl;
+		this.neighbour = startBowl;
 		
-		
-	} 
+	}
+	
+	public void distributeStones(int stonesToBePassed) {
+		if (this.owner.getHasTurn() && stonesToBePassed > 1) {
+			getNeighbour().numberOfStones++;
+			stonesToBePassed--;
+			getNeighbour().distributeStones(stonesToBePassed);
+			
+		}
+	}
 	
 
 

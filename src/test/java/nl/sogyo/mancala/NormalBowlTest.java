@@ -67,6 +67,28 @@ public class NormalBowlTest {
     			getNeighbour().getNeighbour().getNeighbour() instanceof NormalBowl);
     }
     
-
+    @Test
+    public void distributeStones() {
+    	NormalBowl bowl1 = new NormalBowl();
+    	Bowl bowl2 = bowl1.getBowlNumberX(2);
+    	((NormalBowl) bowl2).doMove();
+    	Assert.assertEquals(0, bowl2.numberOfStones);
+    	Assert.assertEquals(5, bowl1.getBowlNumberX(3).numberOfStones);
+    	Assert.assertEquals(5, bowl1.getBowlNumberX(4).numberOfStones);
+    	Assert.assertEquals(5, bowl1.getBowlNumberX(5).numberOfStones);
+    	Assert.assertEquals(5, bowl1.getBowlNumberX(6).numberOfStones);
+    }
+    
+    @Test
+    public void distributeStonesEndinKalaha() {
+    	NormalBowl bowl1 = new NormalBowl();
+    	Bowl bowl3 = bowl1.getBowlNumberX(3);
+    	((NormalBowl) bowl3).doMove();
+    	Assert.assertEquals(0, bowl3.numberOfStones);
+    	Assert.assertEquals(5, bowl1.getBowlNumberX(4).numberOfStones);
+    	Assert.assertEquals(5, bowl1.getBowlNumberX(5).numberOfStones);
+    	Assert.assertEquals(5, bowl1.getBowlNumberX(6).numberOfStones);
+    	Assert.assertEquals(1, bowl1.getBowlNumberX(7).numberOfStones);
+    }
 
 }

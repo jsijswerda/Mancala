@@ -8,7 +8,7 @@ public class PlayerTest {
     @Test
     public void PlayersAreDifferent() {
     	NormalBowl bowl1 = new NormalBowl();
-    	Assert.assertNotEquals("Players are the same", bowl1.getBowlNumberX(7).owner, bowl1.getBowlNumberX(8).owner);
+    	Assert.assertNotEquals(bowl1.getBowlNumberX(7).owner, bowl1.getBowlNumberX(8).owner);
     }
     
     @Test

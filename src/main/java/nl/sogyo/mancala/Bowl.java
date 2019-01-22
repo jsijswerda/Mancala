@@ -21,9 +21,24 @@ abstract class Bowl
 		else {
 			return neighbour.getBowlNumberX(--x);
 		}
+		
+		
 	}
 	
-	
+	public void distributeStones(int stonesToBePassed) {
+		
+		if (stonesToBePassed > 1) {
+			numberOfStones++;
+			stonesToBePassed--;
+			getNeighbour().distributeStones(stonesToBePassed);
+		}
+				
+		else {
+			numberOfStones++;
+			stonesToBePassed--;
+		}
+		
+	}
 	
 	
 		

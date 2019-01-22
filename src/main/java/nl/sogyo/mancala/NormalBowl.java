@@ -16,20 +16,20 @@ public class NormalBowl extends Bowl{
 	}
 	
 	//all other bowls
-	public NormalBowl(Player player, int countBowls, Bowl startingBowl) {
+	public NormalBowl(Player player, int countBowls, Bowl startBowl) {
 		numberOfStones = STARTING_STONES;
 		owner = player;
 		bowlNumber = countBowls;
 		
 				
 		if (countBowls < 6) 
-			neighbour = new NormalBowl(player,++countBowls,startingBowl); 	
+			neighbour = new NormalBowl(player,++countBowls,startBowl); 	
 		else if (countBowls == 6) 
-			neighbour = new Kalaha(player,++countBowls, startingBowl);
+			neighbour = new Kalaha(player,++countBowls, startBowl);
 		else if (countBowls > 6 && countBowls < 12)
-			neighbour = new NormalBowl(player,++countBowls,startingBowl);
+			neighbour = new NormalBowl(player,++countBowls,startBowl);
 		else if (countBowls == 12) 
-			neighbour = new Kalaha(player, startingBowl);
+			neighbour = new Kalaha(player, startBowl);
 		
 		
 	}
@@ -38,10 +38,18 @@ public class NormalBowl extends Bowl{
 	
 
 	public int doMove() {
-		int number = this.numberOfStones;
-		this.numberOfStones = 0;
-		return number;
+		int stonesToDistribute = this.numberOfStones;
+		emptyBowl();
+		getNeighbour().distributeStones(stonesToDistribute);
+		return stonesToDistribute;
 	}
+	
+	
+	public void emptyBowl() {
+		this.numberOfStones = 0;
+	}
+	
+
 	
 	public boolean checkIfEmptyBowl() {
 		return this.numberOfStones == 0;
