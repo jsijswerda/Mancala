@@ -19,8 +19,7 @@ abstract class Bowl
 		if (x == 1)
 			return this;
 		else {
-			x--;
-			return getBowlNumberX(x);
+			return neighbour.getBowlNumberX(--x);
 		}
 	}
 	
