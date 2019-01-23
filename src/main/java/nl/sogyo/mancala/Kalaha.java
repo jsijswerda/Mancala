@@ -6,7 +6,7 @@ public class Kalaha extends Bowl {
 	
 	
 	public Kalaha(Player player, int countBowls, Bowl startingBowl) {
-		numberOfStones = STARTING_STONES;
+		setNumberOfStones(STARTING_STONES);
 		this.owner = player;
 		this.bowlNumber = countBowls;
 		this.neighbour = new NormalBowl(player.getOpponent(),countBowls+1,startingBowl);
@@ -14,7 +14,7 @@ public class Kalaha extends Bowl {
 	}
 	
 	public Kalaha(Player player, Bowl startBowl) {
-		numberOfStones = STARTING_STONES;
+		setNumberOfStones(STARTING_STONES);
 		this.owner = player;
 		this.neighbour = startBowl;
 		
@@ -22,13 +22,13 @@ public class Kalaha extends Bowl {
 	
 	public void distributeStones(int stonesToBePassed) {
 		if (this.owner.getHasTurn() && stonesToBePassed > 1) {
-			numberOfStones++;
+			setNumberOfStones(getNumberOfStones()+1);
 			stonesToBePassed--;
 			getNeighbour().distributeStones(stonesToBePassed);
 				 
 			}
 		else if (this.owner.getHasTurn() && stonesToBePassed == 1) {
-			numberOfStones++;
+			setNumberOfStones(getNumberOfStones()+1);
 			stonesToBePassed--;			
 		}
 		else if (stonesToBePassed > 1) {

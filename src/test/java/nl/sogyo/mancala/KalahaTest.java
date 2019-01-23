@@ -10,7 +10,7 @@ public class KalahaTest {
     {	Player player = new Player(true);
     	NormalBowl bowl = new NormalBowl();
         Bowl kalaha = new Kalaha(player, 1, bowl);
-        Assert.assertEquals(0, kalaha.numberOfStones);
+        Assert.assertEquals(0, kalaha.getNumberOfStones());
         
     }
     

@@ -3,7 +3,7 @@ package nl.sogyo.mancala;
 abstract class Bowl
 {
 	
-	protected int numberOfStones;
+	private int numberOfStones;
 	protected Bowl neighbour;
 	
 	protected Player owner;
@@ -13,6 +13,14 @@ abstract class Bowl
 	
 	public Bowl getNeighbour() {
 		return neighbour;
+	}
+	
+	public int getNumberOfStones() {
+		return numberOfStones;
+	}
+	
+	public void setNumberOfStones(int numberOfStones) {
+		this.numberOfStones = numberOfStones;
 	}
 	
 	public Bowl getBowlNumberX(int x) {

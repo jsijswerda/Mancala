@@ -8,7 +8,7 @@ public class NormalBowl extends Bowl{
 	//first bowl
 	public NormalBowl() {
 		Player player = new Player(true);
-		numberOfStones = STARTING_STONES;
+		setNumberOfStones(STARTING_STONES);
 		owner = player;
 		
 		this.bowlNumber = 1;
@@ -17,7 +17,7 @@ public class NormalBowl extends Bowl{
 	
 	//all other bowls
 	public NormalBowl(Player player, int countBowls, Bowl startBowl) {
-		numberOfStones = STARTING_STONES;
+		setNumberOfStones(STARTING_STONES);
 		owner = player;
 		bowlNumber = countBowls;
 		
@@ -37,22 +37,27 @@ public class NormalBowl extends Bowl{
 	
 	
 
-	public int doMove() {
-		int stonesToDistribute = this.numberOfStones;
-		emptyBowl();
-		getNeighbour().distributeStones(stonesToDistribute);
-		return stonesToDistribute;
+	public int doMove() throws Exception {
+		if (this.owner.getHasTurn()) {
+			int stonesToDistribute = this.getNumberOfStones();
+			emptyBowl();
+			getNeighbour().distributeStones(stonesToDistribute);
+			return stonesToDistribute;
+		}
+		else {
+			throw new Exception("You can't do a move from this bowl");
+		}
 	}
 	
 	
 	public void emptyBowl() {
-		this.numberOfStones = 0;
+		this.setNumberOfStones(0);
 	}
 	
 
 	
 	public boolean checkIfEmptyBowl() {
-		return this.numberOfStones == 0;
+		return this.getNumberOfStones() == 0;
 	}
 
 

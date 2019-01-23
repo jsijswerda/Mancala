@@ -9,7 +9,7 @@ public class NormalBowlTest {
     @Test
     public void fourBeadsinNormalBowl() {
     	Bowl normalbowl = new NormalBowl();
-    	Assert.assertEquals(4, normalbowl.numberOfStones);
+    	Assert.assertEquals(4, normalbowl.getNumberOfStones());
     }
     
     @Test
@@ -19,13 +19,13 @@ public class NormalBowlTest {
     }
     
     @Test
-    public void checkMove() {
+    public void checkMove() throws Exception {
     	NormalBowl bowl = new NormalBowl();
 
     	int n = bowl.doMove();
     	
     	Assert.assertEquals(4, n);
-    	Assert.assertEquals(0, bowl.numberOfStones);
+    	Assert.assertEquals(0, bowl.getNumberOfStones());
    
     }
     
@@ -68,45 +68,68 @@ public class NormalBowlTest {
     }
     
     @Test
-    public void distributeStones() {
+    public void distributeStones() throws Exception {
     	NormalBowl bowl1 = new NormalBowl();
     	Bowl bowl2 = bowl1.getBowlNumberX(2);
     	((NormalBowl) bowl2).doMove();
-    	Assert.assertEquals(0, bowl2.numberOfStones);
-    	Assert.assertEquals(5, bowl1.getBowlNumberX(3).numberOfStones);
-    	Assert.assertEquals(5, bowl1.getBowlNumberX(4).numberOfStones);
-    	Assert.assertEquals(5, bowl1.getBowlNumberX(5).numberOfStones);
-    	Assert.assertEquals(5, bowl1.getBowlNumberX(6).numberOfStones);
-    	Assert.assertEquals(0, bowl1.getBowlNumberX(7).numberOfStones);
+    	Assert.assertEquals(0, bowl2.getNumberOfStones());
+    	Assert.assertEquals(5, bowl1.getBowlNumberX(3).getNumberOfStones());
+    	Assert.assertEquals(5, bowl1.getBowlNumberX(4).getNumberOfStones());
+    	Assert.assertEquals(5, bowl1.getBowlNumberX(5).getNumberOfStones());
+    	Assert.assertEquals(5, bowl1.getBowlNumberX(6).getNumberOfStones());
+    	Assert.assertEquals(0, bowl1.getBowlNumberX(7).getNumberOfStones());
     }
     
     @Test
-    public void distributeStonesEndinKalaha() {
+    public void distributeStonesEndinKalaha() throws Exception {
     	NormalBowl bowl1 = new NormalBowl();
     	Bowl bowl3 = bowl1.getBowlNumberX(3);
     	((NormalBowl) bowl3).doMove();
-    	Assert.assertEquals(0, bowl3.numberOfStones);
-    	Assert.assertEquals(5, bowl1.getBowlNumberX(4).numberOfStones);
-    	Assert.assertEquals(5, bowl1.getBowlNumberX(5).numberOfStones);
-    	Assert.assertEquals(5, bowl1.getBowlNumberX(6).numberOfStones);
-    	Assert.assertEquals(1, bowl1.getBowlNumberX(7).numberOfStones);
+    	Assert.assertEquals(0, bowl3.getNumberOfStones());
+    	Assert.assertEquals(5, bowl1.getBowlNumberX(4).getNumberOfStones());
+    	Assert.assertEquals(5, bowl1.getBowlNumberX(5).getNumberOfStones());
+    	Assert.assertEquals(5, bowl1.getBowlNumberX(6).getNumberOfStones());
+    	Assert.assertEquals(1, bowl1.getBowlNumberX(7).getNumberOfStones());
     	Assert.assertTrue(bowl1.owner.getHasTurn());
     	Assert.assertFalse(bowl1.owner.getOpponent().getHasTurn());
     	
     }
 
     @Test
-    public void distributeStonesEndinBowlOtherPlayer() {
+    public void distributeStonesEndinBowlOtherPlayer() throws Exception {
     	NormalBowl bowl1 = new NormalBowl();
     	Bowl bowl5 = bowl1.getBowlNumberX(5);
     	((NormalBowl) bowl5).doMove();
-    	Assert.assertEquals(0, bowl5.numberOfStones);
-    	Assert.assertEquals(5, bowl1.getBowlNumberX(6).numberOfStones);
-    	Assert.assertEquals(1, bowl1.getBowlNumberX(7).numberOfStones);
-    	Assert.assertEquals(5, bowl1.getBowlNumberX(8).numberOfStones);
-    	Assert.assertEquals(5, bowl1.getBowlNumberX(9).numberOfStones);
+    	Assert.assertEquals(0, bowl5.getNumberOfStones());
+    	Assert.assertEquals(5, bowl1.getBowlNumberX(6).getNumberOfStones());
+    	Assert.assertEquals(1, bowl1.getBowlNumberX(7).getNumberOfStones());
+    	Assert.assertEquals(5, bowl1.getBowlNumberX(8).getNumberOfStones());
+    	Assert.assertEquals(5, bowl1.getBowlNumberX(9).getNumberOfStones());
     	Assert.assertFalse(bowl1.owner.getHasTurn());
     	Assert.assertTrue(bowl1.owner.getOpponent().getHasTurn());
-    }    
+    }
+    
+    @Test(expected = Exception.class)
+    public void testException() throws Exception {
+    	NormalBowl bowl1 = new NormalBowl();
+    	Bowl bowl9 = bowl1.getBowlNumberX(9);
+    	((NormalBowl) bowl9).doMove();
+    	
+    	
+    }
+    
+    @Test
+    public void Steal() throws Exception {
+    	Bowl bowl1 = new NormalBowl();
+    	Bowl bowl6 = bowl1.getBowlNumberX(6);
+    	bowl1.setNumberOfStones(0);
+    	bowl6.setNumberOfStones(8); 
+    	((NormalBowl) bowl6).doMove();
+    	bowl1.steal();
+    	Assert.assertEquals(0, bowl1.getBowlNumberX(13).getNumberOfStones());
+    	Assert.assertEquals(6, bowl1.getNumberOfStones());
+    	
+    	
+    }
     
 }
