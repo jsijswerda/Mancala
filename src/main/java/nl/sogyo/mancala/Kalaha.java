@@ -22,10 +22,17 @@ public class Kalaha extends Bowl {
 	
 	public void distributeStones(int stonesToBePassed) {
 		if (this.owner.getHasTurn() && stonesToBePassed > 1) {
-			getNeighbour().numberOfStones++;
+			numberOfStones++;
 			stonesToBePassed--;
 			getNeighbour().distributeStones(stonesToBePassed);
-			
+				 
+			}
+		else if (this.owner.getHasTurn() && stonesToBePassed == 1) {
+			numberOfStones++;
+			stonesToBePassed--;			
+		}
+		else if (stonesToBePassed > 1) {
+			getNeighbour().distributeStones(stonesToBePassed);
 		}
 	}
 	

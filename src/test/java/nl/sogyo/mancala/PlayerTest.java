@@ -18,6 +18,12 @@ public class PlayerTest {
     }
     
     @Test
+    public void PlayersAreNotEqual() {
+    	NormalBowl bowl1 = new NormalBowl();
+    	Assert.assertNotEquals(bowl1.getBowlNumberX(6).owner, bowl1.getBowlNumberX(12).owner);
+    }
+    
+    @Test
     public void ChangeTurns() {
     	Player player = new Player(true);
     	

@@ -77,6 +77,7 @@ public class NormalBowlTest {
     	Assert.assertEquals(5, bowl1.getBowlNumberX(4).numberOfStones);
     	Assert.assertEquals(5, bowl1.getBowlNumberX(5).numberOfStones);
     	Assert.assertEquals(5, bowl1.getBowlNumberX(6).numberOfStones);
+    	Assert.assertEquals(0, bowl1.getBowlNumberX(7).numberOfStones);
     }
     
     @Test
@@ -89,6 +90,23 @@ public class NormalBowlTest {
     	Assert.assertEquals(5, bowl1.getBowlNumberX(5).numberOfStones);
     	Assert.assertEquals(5, bowl1.getBowlNumberX(6).numberOfStones);
     	Assert.assertEquals(1, bowl1.getBowlNumberX(7).numberOfStones);
+    	Assert.assertTrue(bowl1.owner.getHasTurn());
+    	Assert.assertFalse(bowl1.owner.getOpponent().getHasTurn());
+    	
     }
 
+    @Test
+    public void distributeStonesEndinBowlOtherPlayer() {
+    	NormalBowl bowl1 = new NormalBowl();
+    	Bowl bowl5 = bowl1.getBowlNumberX(5);
+    	((NormalBowl) bowl5).doMove();
+    	Assert.assertEquals(0, bowl5.numberOfStones);
+    	Assert.assertEquals(5, bowl1.getBowlNumberX(6).numberOfStones);
+    	Assert.assertEquals(1, bowl1.getBowlNumberX(7).numberOfStones);
+    	Assert.assertEquals(5, bowl1.getBowlNumberX(8).numberOfStones);
+    	Assert.assertEquals(5, bowl1.getBowlNumberX(9).numberOfStones);
+    	Assert.assertFalse(bowl1.owner.getHasTurn());
+    	Assert.assertTrue(bowl1.owner.getOpponent().getHasTurn());
+    }    
+    
 }

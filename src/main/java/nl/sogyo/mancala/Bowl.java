@@ -19,7 +19,7 @@ abstract class Bowl
 		if (x == 1)
 			return this;
 		else {
-			return neighbour.getBowlNumberX(--x);
+			return neighbour.getBowlNumberX(x-1);
 		}
 		
 		
@@ -36,6 +36,7 @@ abstract class Bowl
 		else {
 			numberOfStones++;
 			stonesToBePassed--;
+			owner.changeTurn();
 		}
 		
 	}
