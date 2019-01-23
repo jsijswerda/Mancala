@@ -7,16 +7,17 @@ public class Kalaha extends Bowl {
 	
 	public Kalaha(Player player, int countBowls, Bowl startingBowl) {
 		setNumberOfStones(STARTING_STONES);
-		this.owner = player;
-		this.bowlNumber = countBowls;
-		this.neighbour = new NormalBowl(player.getOpponent(),countBowls+1,startingBowl);
+		owner = player;
+		bowlNumber = countBowls;
+		neighbour = new NormalBowl(player.getOpponent(),countBowls+1,startingBowl);
 		
 	}
 	
 	public Kalaha(Player player, Bowl startBowl) {
 		setNumberOfStones(STARTING_STONES);
-		this.owner = player;
-		this.neighbour = startBowl;
+		owner = player;
+		neighbour = startBowl;
+		
 		
 	}
 	

@@ -5,7 +5,6 @@ abstract class Bowl
 	
 	private int numberOfStones;
 	protected Bowl neighbour;
-	
 	protected Player owner;
 	protected int bowlNumber;
 	
@@ -32,22 +31,12 @@ abstract class Bowl
 		
 		
 	}
+
+	public abstract void distributeStones(int stonesToBePassed);
 	
-	public void distributeStones(int stonesToBePassed) {
-		
-		if (stonesToBePassed > 1) {
-			numberOfStones++;
-			stonesToBePassed--;
-			getNeighbour().distributeStones(stonesToBePassed);
-		}
-				
-		else {
-			numberOfStones++;
-			stonesToBePassed--;
-			owner.changeTurn();
-		}
-		
-	}
+
+
+
 	
 	
 		
