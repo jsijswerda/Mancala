@@ -34,12 +34,12 @@ public class NormalBowl extends Bowl{
 	
 	
 
-	public int doMove() throws Exception {
+	public void doMove() throws Exception {
 		if (this.owner.getHasTurn()) {
 			int stonesToDistribute = this.getNumberOfStones();
 			emptyBowl();
 			getNeighbour().distributeStones(stonesToDistribute);
-			return stonesToDistribute;
+			
 		}
 		else {
 			throw new Exception("You can't do a move from this bowl");
@@ -63,18 +63,19 @@ public class NormalBowl extends Bowl{
 		return this.getNumberOfStones() == 0;
 	}
 
-	public void distributeStones(int stonesToBePassed) {
+	public void distributeStones(int stonesToDistribute) {
 		
-		if (stonesToBePassed > 1) {
+		if (stonesToDistribute > 1) {
 			setNumberOfStones(getNumberOfStones()+1);
-			stonesToBePassed--;
-			getNeighbour().distributeStones(stonesToBePassed);
+			stonesToDistribute--;
+			getNeighbour().distributeStones(stonesToDistribute);
+
 		}
 				
-		else if (stonesToBePassed == 1) {
+		else if (stonesToDistribute == 1) {
 			
-			setNumberOfStones(getNumberOfStones()+1);
-			stonesToBePassed--;
+			this.setNumberOfStones(getNumberOfStones()+1);
+			stonesToDistribute--;
 			if (this.getNumberOfStones() == 1 && this.owner.getHasTurn()) {
 				steal();
 			}
@@ -85,17 +86,19 @@ public class NormalBowl extends Bowl{
 	
 	public Bowl getOppositeBowl() {
 		int stepsToKalaha = stepsToFindKalaha();
-		return getBowlNumberX(2*stepsToKalaha+1);
+		return this.getBowlNumberX(2*stepsToKalaha+1);
 	}
 	
 	public void steal() {
 		Bowl oppositeBowl = getOppositeBowl();
 		int stolenStones = oppositeBowl.getNumberOfStones();
+		int totalNumberOfStonesToKalaha = stolenStones + this.getNumberOfStones();
 		oppositeBowl.setNumberOfStones(0);
-		this.setNumberOfStones(getNumberOfStones() + stolenStones);
+		this.setNumberOfStones(0);
+		this.getBowlNumberX(stepsToFindKalaha()+1).setNumberOfStones(getNumberOfStones()+totalNumberOfStonesToKalaha);
 	}
 
-
+	
 	
 
 

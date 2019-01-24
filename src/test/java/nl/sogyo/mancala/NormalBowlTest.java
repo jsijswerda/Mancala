@@ -18,17 +18,7 @@ public class NormalBowlTest {
     	Assert.assertFalse(normalBowl.checkIfEmptyBowl());
     }
     
-    @Test
-    public void checkMove() throws Exception {
-    	NormalBowl bowl = new NormalBowl();
-
-    	int n = bowl.doMove();
-    	
-    	Assert.assertEquals(4, n);
-    	Assert.assertEquals(0, bowl.getNumberOfStones());
    
-    }
-    
     @Test
     public void hasNeighbour() {
     	
@@ -59,6 +49,8 @@ public class NormalBowlTest {
     	NormalBowl bowl1 = new NormalBowl();
     	Assert.assertEquals(bowl1.getBowlNumberX(14).getNeighbour(), bowl1);
     }
+    
+    
     
     @Test
     public void findNextNormalBowlAfterKalaha() {
@@ -140,15 +132,17 @@ public class NormalBowlTest {
     	bowl1.setNumberOfStones(0);
     	bowl6.setNumberOfStones(8); 
     	((NormalBowl) bowl6).doMove();
-    	Assert.assertEquals(1, bowl1.getBowlNumberX(7).getNumberOfStones());
-    	Assert.assertEquals(5, bowl1.getBowlNumberX(8).getNumberOfStones());
-    	Assert.assertEquals(5, bowl1.getBowlNumberX(9).getNumberOfStones());
-    	Assert.assertEquals(5, bowl1.getBowlNumberX(10).getNumberOfStones());
-    	Assert.assertEquals(5, bowl1.getBowlNumberX(11).getNumberOfStones());
-    	Assert.assertEquals(5, bowl1.getBowlNumberX(12).getNumberOfStones());
-    	Assert.assertEquals(0, bowl1.getBowlNumberX(13).getNumberOfStones());
-    	Assert.assertEquals(0, bowl1.getBowlNumberX(14).getNumberOfStones());
-    	Assert.assertEquals(6, bowl1.getNumberOfStones());
+    	
+    	Assert.assertEquals("Bowl 6 doesn't have 0 stones.",0, bowl1.getBowlNumberX(6).getNumberOfStones());
+    	Assert.assertEquals("Bowl 8 doesn't have 5 stones.",5, bowl1.getBowlNumberX(8).getNumberOfStones());
+    	Assert.assertEquals("Bowl 9 doesn't have 5 stones.",5, bowl1.getBowlNumberX(9).getNumberOfStones());
+    	Assert.assertEquals("Bowl 10 doesn't have 5 stones.",5, bowl1.getBowlNumberX(10).getNumberOfStones());
+    	Assert.assertEquals("Bowl 11 doesn't have 5 stones.",5, bowl1.getBowlNumberX(11).getNumberOfStones());
+    	Assert.assertEquals("Bowl 12 doesn't have 5 stones.",5, bowl1.getBowlNumberX(12).getNumberOfStones());
+    	Assert.assertEquals("Bowl 13 doesn't have 0 stones.",0, bowl1.getBowlNumberX(13).getNumberOfStones());
+    	Assert.assertEquals("Bowl 14 (Kalaha) doesn't have 0 stones.",0, bowl1.getBowlNumberX(14).getNumberOfStones());
+    	Assert.assertEquals("Bowl 1 doesn't have 0 stones.",0, bowl1.getNumberOfStones());
+    	Assert.assertEquals("Bowl 7 (Kalaha) doesn't have 6 stones.",6, bowl1.getBowlNumberX(7).getNumberOfStones());
     	}
     	
     @Test

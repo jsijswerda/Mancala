@@ -20,5 +20,12 @@ public class KalahaTest {
     	Assert.assertTrue(bowl1.getNeighbour().getNeighbour().getNeighbour().getNeighbour().
     			getNeighbour().getNeighbour() instanceof Kalaha);
     }
+    
+    @Test
+    public void findSecondKalaha() {
+    	NormalBowl bowl1 = new NormalBowl();
+    	Assert.assertTrue(bowl1.getBowlNumberX(14) instanceof Kalaha);
+    	
+    }
 
 }
