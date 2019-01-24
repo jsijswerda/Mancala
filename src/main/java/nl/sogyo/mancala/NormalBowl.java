@@ -4,7 +4,6 @@ public class NormalBowl extends Bowl{
 	
 	private final int STARTING_STONES = 4;
 	
-	
 	//first bowl
 	public NormalBowl() {
 		Player player = new Player(true);
@@ -15,24 +14,21 @@ public class NormalBowl extends Bowl{
 	}
 	
 	//all other bowls
-	public NormalBowl(Player player, int countBowls, Bowl startBowl) {
+	public NormalBowl(Player player, int bowlCount, Bowl startBowl) {
 		setNumberOfStones(STARTING_STONES);
 		owner = player;
-		bowlNumber = countBowls;
+		bowlNumber = bowlCount;
 		
-		if (countBowls < 6) 
-			neighbour = new NormalBowl(player,countBowls+1,startBowl); 	
-		else if (countBowls == 6) 
-			neighbour = new Kalaha(player,countBowls+1, startBowl);
-		else if (countBowls > 6 && countBowls < 13)
-			neighbour = new NormalBowl(player,countBowls+1,startBowl);
-		else if (countBowls == 13) 
+		if (bowlCount < 6) 
+			neighbour = new NormalBowl(player,bowlCount+1,startBowl); 	
+		else if (bowlCount == 6) 
+			neighbour = new Kalaha(player,bowlCount+1, startBowl);
+		else if (bowlCount > 6 && bowlCount < 13)
+			neighbour = new NormalBowl(player,bowlCount+1,startBowl);
+		else if (bowlCount == 13) 
 			neighbour = new Kalaha(player, startBowl);
 	
 	}
-
-	
-	
 
 	public void doMove() throws Exception {
 		if (this.owner.getHasTurn()) {
@@ -61,10 +57,7 @@ public class NormalBowl extends Bowl{
 			return 1;
 		else
 			return 1 + ((NormalBowl) getNeighbour()).stepsToFindKalaha();
-	
 	}
-
-
 
 	public void distributeStones(int stonesToDistribute) {
 		
@@ -72,7 +65,6 @@ public class NormalBowl extends Bowl{
 			setNumberOfStones(getNumberOfStones()+1);
 			stonesToDistribute--;
 			getNeighbour().distributeStones(stonesToDistribute);
-
 		}
 				
 		else if (stonesToDistribute == 1) {
@@ -100,9 +92,4 @@ public class NormalBowl extends Bowl{
 		this.setNumberOfStones(0);
 		this.getBowlNumberX(stepsToFindKalaha()+1).setNumberOfStones(getNumberOfStones()+totalNumberOfStonesToKalaha);
 	}
-
-	
-	
-
-
 }
