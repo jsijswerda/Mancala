@@ -41,6 +41,10 @@ public class NormalBowl extends Bowl{
 				emptyBowl();
 				getNeighbour().distributeStones(stonesToDistribute);
 			}
+			else {
+				playerStonesAtEndGame();
+				opponentStonesAtEndGame();
+			}
 		}
 		else {
 			throw new Exception("You can't do a move from this bowl");

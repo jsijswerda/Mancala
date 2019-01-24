@@ -46,7 +46,29 @@ abstract class Bowl
 		}
 		return true;
 	}
-
+	
+	public int playerStonesAtEndGame() {
+		int total = 0;
+		for (int i = 1;i<15;i++) {
+			if (this.getBowlNumberX(i).owner.getHasTurn()) {
+				total += getBowlNumberX(i).getNumberOfStones();
+			}
+	
+		}
+		return total;
+	}
+	
+	public int opponentStonesAtEndGame() {
+		int total = 0;
+		for (int i = 1;i<15;i++) {
+			if (!this.getBowlNumberX(i).owner.getHasTurn()) {
+				total += getBowlNumberX(i).getNumberOfStones();
+			}
+	
+		}
+		return total;
+		
+	}
 	public abstract void distributeStones(int stonesToBePassed);
 	
 

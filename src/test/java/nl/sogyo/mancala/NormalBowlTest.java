@@ -160,7 +160,7 @@ public class NormalBowlTest {
     
     
     @Test
-    public void endGame() {
+    public void isEndGame() {
     	NormalBowl bowl1 = new NormalBowl();
     	for (int i = 1;i<7;i++) {
     		bowl1.getBowlNumberX(i).setNumberOfStones(0);
@@ -169,7 +169,15 @@ public class NormalBowlTest {
     	Assert.assertTrue(bowl1.checkEndGame());
     } 
     
-    
+    @Test
+    public void endGame() {
+    	NormalBowl bowl1 = new NormalBowl();
+    	for (int i = 1;i<7;i++) {
+    		bowl1.getBowlNumberX(i).setNumberOfStones(0);
+    	}
+    	Assert.assertEquals(0,bowl1.playerStonesAtEndGame());
+    	Assert.assertEquals(24, bowl1.opponentStonesAtEndGame());
+    }
     	
     	
 }
