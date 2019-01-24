@@ -18,7 +18,7 @@ abstract class Bowl
 		return numberOfStones;
 	}
 	
-	public void setNumberOfStones(int numberOfStones) {
+	protected void setNumberOfStones(int numberOfStones) {
 		this.numberOfStones = numberOfStones;
 	}
 	
