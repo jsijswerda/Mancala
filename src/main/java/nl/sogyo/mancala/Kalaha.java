@@ -30,7 +30,8 @@ public class Kalaha extends Bowl {
 			}
 		else if (this.owner.getHasTurn() && stonesToBePassed == 1) {
 			setNumberOfStones(getNumberOfStones()+1);
-			stonesToBePassed--;			
+			stonesToBePassed--;
+			
 		}
 		else if (stonesToBePassed > 0) {
 			getNeighbour().distributeStones(stonesToBePassed);

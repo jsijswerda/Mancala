@@ -31,6 +31,21 @@ abstract class Bowl
 		
 		
 	}
+	
+	public boolean checkIfEmptyBowl() {
+		return this.getNumberOfStones() == 0;
+	}
+	
+	public boolean checkEndGame() {
+		for (int i = 1;i<15;i++) {
+			if (getBowlNumberX(i) instanceof NormalBowl && getBowlNumberX(i).owner.getHasTurn()) {
+				if (!getBowlNumberX(i).checkIfEmptyBowl())
+					return false;
+			}
+			
+		}
+		return true;
+	}
 
 	public abstract void distributeStones(int stonesToBePassed);
 	

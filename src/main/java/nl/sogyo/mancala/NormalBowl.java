@@ -36,10 +36,11 @@ public class NormalBowl extends Bowl{
 
 	public void doMove() throws Exception {
 		if (this.owner.getHasTurn()) {
-			int stonesToDistribute = this.getNumberOfStones();
-			emptyBowl();
-			getNeighbour().distributeStones(stonesToDistribute);
-			
+			if (!checkEndGame()) {
+				int stonesToDistribute = this.getNumberOfStones();
+				emptyBowl();
+				getNeighbour().distributeStones(stonesToDistribute);
+			}
 		}
 		else {
 			throw new Exception("You can't do a move from this bowl");
@@ -59,9 +60,7 @@ public class NormalBowl extends Bowl{
 	
 	}
 
-	public boolean checkIfEmptyBowl() {
-		return this.getNumberOfStones() == 0;
-	}
+
 
 	public void distributeStones(int stonesToDistribute) {
 		

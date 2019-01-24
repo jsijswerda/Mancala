@@ -143,17 +143,32 @@ public class NormalBowlTest {
     	Assert.assertEquals("Bowl 14 (Kalaha) doesn't have 0 stones.",0, bowl1.getBowlNumberX(14).getNumberOfStones());
     	Assert.assertEquals("Bowl 1 doesn't have 0 stones.",0, bowl1.getNumberOfStones());
     	Assert.assertEquals("Bowl 7 (Kalaha) doesn't have 6 stones.",6, bowl1.getBowlNumberX(7).getNumberOfStones());
+    	Assert.assertFalse(bowl6.checkEndGame());
     	}
     	
-    @Test
-    public void testAllBeginStones() {
-    	Bowl bowl1 = new NormalBowl();
-    	Bowl bowl13 = bowl1.getBowlNumberX(13);
-    	Assert.assertEquals(4, bowl13.getNumberOfStones());
-    	
-    } 
-    	
 
+    	
+    @Test
+    public void notEndGame() {
+    	NormalBowl bowl1 = new NormalBowl();
+    	bowl1.setNumberOfStones(0);
+    	
+    	Assert.assertFalse(bowl1.checkEndGame());
+    }
+    
+    
+    
+    
+    @Test
+    public void endGame() {
+    	NormalBowl bowl1 = new NormalBowl();
+    	for (int i = 1;i<7;i++) {
+    		bowl1.getBowlNumberX(i).setNumberOfStones(0);
+    	}
+    	Assert.assertTrue(bowl1.owner.getHasTurn());
+    	Assert.assertTrue(bowl1.checkEndGame());
+    } 
+    
     
     	
     	
