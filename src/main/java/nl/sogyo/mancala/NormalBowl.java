@@ -31,33 +31,27 @@ public class NormalBowl extends Bowl{
 	}
 
 	public void doMove() throws Exception {
-		if (this.owner.getHasTurn()) {
-			if (!checkEndGame()) {
-				int stonesToDistribute = this.getNumberOfStones();
-				emptyBowl();
-				getNeighbour().distributeStones(stonesToDistribute);
-			}
-			else {
-				playerStonesAtEndGame();
-				opponentStonesAtEndGame();
-			}
+		if (!this.owner.getHasTurn()) 
+			throw new Exception("You can't do a move from this bowl");
+		if (!checkEndGame()) {
+			int stonesToDistribute = this.getNumberOfStones();
+			emptyBowl();
+			getNeighbour().distributeStones(stonesToDistribute);
 		}
 		else {
-			throw new Exception("You can't do a move from this bowl");
+			System.out.println("end game");
+			playerStonesAtEndGame();
+			opponentStonesAtEndGame();
 		}
 	}
+
+	
 	
 	
 	public void emptyBowl() {
 		this.setNumberOfStones(0);
 	}
 	
-	public int stepsToFindKalaha() {
-		if (getNeighbour() instanceof Kalaha)
-			return 1;
-		else
-			return 1 + ((NormalBowl) getNeighbour()).stepsToFindKalaha();
-	}
 
 	public void distributeStones(int stonesToDistribute) {
 		

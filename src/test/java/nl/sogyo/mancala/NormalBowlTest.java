@@ -170,13 +170,15 @@ public class NormalBowlTest {
     } 
     
     @Test
-    public void endGame() {
+    public void endGame() throws Exception {
     	NormalBowl bowl1 = new NormalBowl();
     	for (int i = 1;i<7;i++) 
     		bowl1.getBowlNumberX(i).setNumberOfStones(0);
     	
-    	Assert.assertEquals(0,bowl1.playerStonesAtEndGame());
-    	Assert.assertEquals(24, bowl1.opponentStonesAtEndGame());
+    	Assert.assertTrue(bowl1.checkEndGame());
+    	bowl1.doMove();
+    	Assert.assertEquals(0, bowl1.getBowlNumberX(7).getNumberOfStones());
+    	Assert.assertEquals(24, bowl1.getBowlNumberX(14).getNumberOfStones());
     }
     	
     	

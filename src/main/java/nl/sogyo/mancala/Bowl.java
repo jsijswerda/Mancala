@@ -32,6 +32,21 @@ abstract class Bowl
 		
 	}
 	
+	public int stepsToFindKalaha() {
+		if (this instanceof Kalaha)
+			return 0;
+		else
+			return 1 + getNeighbour().stepsToFindKalaha();
+	}
+	
+	public int stepsToFindKalahaOpponent() {
+		if (this instanceof Kalaha)
+			return 7;
+		else
+			return 1 + getNeighbour().stepsToFindKalahaOpponent();
+	}	
+
+	
 	public boolean checkIfEmptyBowl() {
 		return this.getNumberOfStones() == 0;
 	}
@@ -47,7 +62,7 @@ abstract class Bowl
 		return true;
 	}
 	
-	public int playerStonesAtEndGame() {
+	public void playerStonesAtEndGame() {
 		int total = 0;
 		for (int i = 1;i<15;i++) {
 			if (this.getBowlNumberX(i).owner.getHasTurn()) {
@@ -55,18 +70,23 @@ abstract class Bowl
 			}
 	
 		}
-		return total;
+		if (this instanceof Kalaha)
+			this.setNumberOfStones(total);
+		else if (this instanceof NormalBowl)
+			this.getBowlNumberX(stepsToFindKalaha()+1).setNumberOfStones(total);
 	}
 	
-	public int opponentStonesAtEndGame() {
+	public void opponentStonesAtEndGame() {
 		int total = 0;
 		for (int i = 1;i<15;i++) {
 			if (!this.getBowlNumberX(i).owner.getHasTurn()) {
 				total += getBowlNumberX(i).getNumberOfStones();
 			}
-	
+		
 		}
-		return total;
+
+			this.getBowlNumberX(stepsToFindKalahaOpponent()+1).setNumberOfStones(total);
+		
 		
 	}
 	public abstract void distributeStones(int stonesToBePassed);
