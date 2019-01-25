@@ -39,7 +39,6 @@ public class NormalBowl extends Bowl{
 			getNeighbour().distributeStones(stonesToDistribute);
 		}
 		else {
-			System.out.println("end game");
 			playerStonesAtEndGame();
 			opponentStonesAtEndGame();
 		}
