@@ -28,8 +28,6 @@ abstract class Bowl
 		else {
 			return neighbour.getBowlNumberX(x-1);
 		}
-		
-		
 	}
 	
 	public int stepsToFindKalaha() {
@@ -90,29 +88,5 @@ abstract class Bowl
 		
 	}
 	public abstract void distributeStones(int stonesToBePassed);
-	
 
-
-
-	
-	
-		
-	
-	
-	
-	
-
-	
-
-	
-
-
-
-
-
-
-    
-	
-	
-	
 }
